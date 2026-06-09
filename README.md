@@ -22,6 +22,7 @@ Leveraging **Google Gemini AI** for intelligent expense categorization and trend
 - ✅ Bank reconciliation engine with match scoring and suggested review actions
 - ✅ Financial reporting utilities for cashflow, account snapshots, CSV export, and anomaly detection
 - ✅ Audit log and import batch history schema for production traceability
+- ✅ Goal planning, debt payoff strategy comparison, transaction rules, and cashflow forecasting engines
 - ✅ Focused Node test coverage for import parsing, budget calculations, and recurring schedules
 - ✅ Deployed to **Vercel** for scalability, performance, and reliability  
 - ✅ Tested REST APIs thoroughly using **Postman**
@@ -182,6 +183,19 @@ These modules are intentionally framework-light so they can be tested independen
 
 ---
 
+## Planning Engines
+
+Additional finance planning modules provide original business logic beyond basic CRUD:
+
+- `lib/goal-planning.mjs` calculates savings goal progress, projected completion dates, deadline risk, and goal priority.
+- `lib/debt-payoff.mjs` simulates avalanche and snowball debt payoff schedules and compares interest impact.
+- `lib/transaction-rules.mjs` scores and applies automatic categorization rules to imported or manually entered transactions.
+- `lib/cashflow-forecast.mjs` builds monthly baselines, forecasts future balances, and applies what-if scenario adjustments.
+
+These are covered by dedicated tests and can be wired into future dashboard views or API routes.
+
+---
+
 ## Testing
 
 Run the focused test suite:
@@ -197,6 +211,10 @@ Current coverage includes:
 - Bank reconciliation match scoring
 - Financial reporting and CSV export
 - Audit log and import history helpers
+- Savings goal planning
+- Debt payoff simulations
+- Automatic transaction rules
+- Cashflow forecasting scenarios
 
 ---
 
