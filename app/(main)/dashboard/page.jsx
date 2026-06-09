@@ -8,6 +8,9 @@ import AccountCard from './_componenets/account-card'
 import { getCurrentBudget } from '@/actions/budget'
 import BudgetProgress from './_componenets/budget-progress'
 import DashboardOverview from './_componenets/transaction-overview'
+import TransactionImportDrawer from './_componenets/transaction-import-drawer'
+import MonthlyBudgetPlanner from './_componenets/monthly-budget-planner'
+import { getMonthlyBudgetPlan } from '@/actions/budget'
 
 async function DashboardPage() {
   
@@ -21,6 +24,7 @@ if (defaultAccount){
 
 
 const transactions =  await getDashboardData()
+const monthlyBudgetPlan = await getMonthlyBudgetPlan()
 
 
   return (
@@ -32,10 +36,16 @@ const transactions =  await getDashboardData()
     currentExpenses = {budgetData?.currentExpenses|| 0}
     />)}
 
+    <MonthlyBudgetPlanner plan={monthlyBudgetPlan} />
+
 
 
 
     {/*Overview */}
+    <div className='flex justify-end'>
+      <TransactionImportDrawer accounts={accounts} />
+    </div>
+
     <Suspense fallback={"Loading Overview..."}>
       <DashboardOverview
       accounts ={accounts}
